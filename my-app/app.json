@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "Task-Flow",
+    "slug": "Task-Flow",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/todo-img.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/todo-img.png",
+      "backgroundColor": "#0284c7",
+      "resizeMode": "contain"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/todo-img.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/todo-img.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+         "backgroundColor": "#0284c7"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
