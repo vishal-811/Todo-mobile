@@ -12,6 +12,7 @@ import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import Toast from 'react-native-toast-message';
 
 export default function ProfileScreen() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -26,18 +27,23 @@ export default function ProfileScreen() {
       const token = await AsyncStorage.getItem('accessToken');
       if (token) {
         setIsAuthenticated(true);
+        Toast.show({
+          type: 'success',
+          text1: 'Welcome back!',
+        });
       } else {
         setIsAuthenticated(false);
       }
     } catch (error) {
       console.error('Error checking auth status:', error);
+      Toast.show({
+        type: 'error',
+        text1: 'Authentication Error',
+        text2: 'Failed to check authentication status',
+      });
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleLogin = () => {
-    router.push('/signin');
   };
 
   const handleLogout = async () => {
@@ -53,14 +59,27 @@ export default function ProfileScreen() {
             try {
               await AsyncStorage.removeItem('accessToken');
               setIsAuthenticated(false);
+              Toast.show({
+                type: 'success',
+                text1: 'Logged out',
+                text2: 'You have been successfully logged out',
+              });
               router.replace('/signin');
             } catch (error) {
-              Alert.alert('Error', 'Failed to logout');
+              Toast.show({
+                type: 'error',
+                text1: 'Error',
+                text2: 'Failed to logout',
+              });
             }
           },
         },
       ]
     );
+  };
+
+  const handleLogin = () => {
+    router.push('/signin');
   };
 
   if (loading) {
