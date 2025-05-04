@@ -36,3 +36,11 @@ A sleek and intuitive mobile todo application built with React Native and Expo. 
 ```bash
 git clone https://github.com/vishal-811/Todo-mobile.git
 cd todo-mobile
+
+2. Install dependencies:
+```bash
+npm install
+
+3. Start the development server:
+```bash
+npx expo start
